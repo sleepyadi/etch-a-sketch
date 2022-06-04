@@ -3,3 +3,9 @@
     margin: 0;
     border: 2px solid red;
 }
+
+body {
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+}
