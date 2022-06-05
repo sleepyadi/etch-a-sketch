@@ -1,6 +1,8 @@
 const canvas = document.querySelector('.canvas');
+const black = 'black';
+let penColor = black;
 
-function createGrid(containerNode, grids) {
+function createGrid(containerNode, grids=20) {
     
     let h = Number(containerNode.offsetHeight) / grids;
     let w = Number(containerNode.offsetWidth) / grids;
@@ -19,5 +21,28 @@ function createGrid(containerNode, grids) {
         }
         containerNode.appendChild(colDiv);
     }
+}
+
+function draw(event) {
+
+    if (event.target.getAttribute('class').includes('row')) {
+        event.target.style.backgroundColor = penColor;
+    }
+}
+
+function linkGridEvents() {
+    const rows = document.querySelectorAll('.row');
+
+    rows.forEach((row) => {
+        
+        row.addEventListener('mouseover', draw);
+    })
+
+}
+
+
+function setupGrid(gridSize) {
+    createGrid(canvas,gridSize);
+    linkGridEvents();
 }
 
