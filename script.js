@@ -41,7 +41,8 @@ function linkGridEvents() {
 }
 
 
-function setupGrid(gridSize) {
+function setupGrid(containerNode, gridSize) {
+    containerNode.textContent = '';
     createGrid(canvas,gridSize);
     linkGridEvents();
 }
