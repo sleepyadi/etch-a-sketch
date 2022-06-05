@@ -57,3 +57,10 @@ window.addEventListener('mousedown', () => {
 window.addEventListener('mouseup', () => {
     isMouseDown = false;
 })
+
+const gridSizeBtn = document.querySelector('.grid-size');
+
+gridSizeBtn.addEventListener('click', () => {
+    let gridSize = Number(prompt('Input Size of grid(square):'));
+    setupGrid(canvas, gridSize);
+})
