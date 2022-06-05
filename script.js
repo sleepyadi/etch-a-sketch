@@ -1,6 +1,7 @@
 const canvas = document.querySelector('.canvas');
 const black = 'black';
 let penColor = black;
+let isMouseDown = false;
 
 function createGrid(containerNode, grids=20) {
     
@@ -25,7 +26,7 @@ function createGrid(containerNode, grids=20) {
 
 function draw(event) {
 
-    if (event.target.getAttribute('class').includes('row')) {
+    if (event.target.getAttribute('class').includes('row') && isMouseDown) {
         event.target.style.backgroundColor = penColor;
     }
 }
@@ -47,3 +48,12 @@ function setupGrid(containerNode, gridSize) {
     linkGridEvents();
 }
 
+
+// check for mouse down and up
+window.addEventListener('mousedown', () => {
+    isMouseDown = true;
+})
+
+window.addEventListener('mouseup', () => {
+    isMouseDown = false;
+})
