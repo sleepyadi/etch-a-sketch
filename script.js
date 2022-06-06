@@ -3,12 +3,28 @@ const gridSizeBtn = document.querySelector('.grid-size');
 const clearBtn = document.querySelector('.clear');
 const blackBtn = document.querySelector('.black');
 const eraserBtn = document.querySelector('.eraser');
+const rainbowBtn = document.querySelector('.rainbow');
+
 
 const WHITE = 'white';
 const BLACK= 'black';
+let isRainbow = false;
 let penColor = BLACK;
 let isMouseDown = false;
 let gridSize = 20;
+
+function random(n) {
+    // returns between 0 to n-1(inclusive)
+    return Math.floor(Math.random() * n);
+}
+
+function randomRGB() {
+    let r = random(256);
+    let g = random(256);
+    let b = random(256);
+
+    return `rgb(${r},${g},${b})`
+}
 
 function createGrid(containerNode, grids=20) {
     
@@ -34,7 +50,11 @@ function createGrid(containerNode, grids=20) {
 function draw(event) {
 
     if (event.target.getAttribute('class').includes('row') && isMouseDown) {
-        event.target.style.backgroundColor = penColor;
+        if (isRainbow) {
+            event.target.style.backgroundColor = randomRGB();
+        } else {
+            event.target.style.backgroundColor = penColor;
+        }
     }
 }
 
@@ -75,6 +95,7 @@ function getGridSize(msg) {
 }
 
 
+
 gridSizeBtn.addEventListener('click', () => {
     gridSize = getGridSize('Input Size of grid(square):');
     setupGrid(canvas, gridSize);
@@ -85,11 +106,15 @@ clearBtn.addEventListener('click', () => {
 })
 
 blackBtn.addEventListener('click', () => {
+    isRainbow = false;
     penColor = BLACK;
 })
 
 eraserBtn.addEventListener('click', () => {
+    isRainbow = false;
     penColor = WHITE;
 })
 
-
+rainbowBtn.addEventListener('click', () => {
+    isRainbow = true;
+})
