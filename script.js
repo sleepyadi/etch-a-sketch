@@ -1,7 +1,10 @@
 const canvas = document.querySelector('.canvas');
 const gridSizeBtn = document.querySelector('.grid-size');
-const clear = document.querySelector('.clear');
+const clearBtn = document.querySelector('.clear');
+const blackBtn = document.querySelector('.black');
+const eraserBtn = document.querySelector('.eraser');
 
+const WHITE = 'white';
 const BLACK= 'black';
 let penColor = BLACK;
 let isMouseDown = false;
@@ -77,6 +80,16 @@ gridSizeBtn.addEventListener('click', () => {
     setupGrid(canvas, gridSize);
 })
 
-clear.addEventListener('click', () => {
+clearBtn.addEventListener('click', () => {
     setupGrid(canvas, gridSize);
 })
+
+blackBtn.addEventListener('click', () => {
+    penColor = BLACK;
+})
+
+eraserBtn.addEventListener('click', () => {
+    penColor = WHITE;
+})
+
+
