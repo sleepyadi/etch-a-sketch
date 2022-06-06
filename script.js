@@ -4,7 +4,7 @@ const clearBtn = document.querySelector('.clear');
 const blackBtn = document.querySelector('.black');
 const eraserBtn = document.querySelector('.eraser');
 const rainbowBtn = document.querySelector('.rainbow');
-
+const colorChoice = document.querySelector('.color-choice');
 
 const WHITE = 'white';
 const BLACK= 'black';
@@ -117,4 +117,8 @@ eraserBtn.addEventListener('click', () => {
 
 rainbowBtn.addEventListener('click', () => {
     isRainbow = true;
+})
+
+colorChoice.addEventListener('change', (e) => {
+    penColor = e.target.value;
 })
