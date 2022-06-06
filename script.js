@@ -11,7 +11,7 @@ const BLACK= 'black';
 let isRainbow = false;
 let penColor = BLACK;
 let isMouseDown = false;
-let gridSize = 20;
+let gridSize = 16;
 
 function random(n) {
     // returns between 0 to n-1(inclusive)
@@ -122,3 +122,6 @@ rainbowBtn.addEventListener('click', () => {
 colorChoice.addEventListener('change', (e) => {
     penColor = e.target.value;
 })
+
+// initialize grid at start
+setupGrid(canvas, gridSize);
