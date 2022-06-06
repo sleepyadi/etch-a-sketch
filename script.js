@@ -1,7 +1,11 @@
 const canvas = document.querySelector('.canvas');
-const black = 'black';
-let penColor = black;
+const gridSizeBtn = document.querySelector('.grid-size');
+const clear = document.querySelector('.clear');
+
+const BLACK= 'black';
+let penColor = BLACK;
 let isMouseDown = false;
+let gridSize = 20;
 
 function createGrid(containerNode, grids=20) {
     
@@ -58,9 +62,21 @@ window.addEventListener('mouseup', () => {
     isMouseDown = false;
 })
 
-const gridSizeBtn = document.querySelector('.grid-size');
+function getGridSize(msg) {
+    let gSize = Number(prompt(msg));
+    if (isNaN(gSize)) {
+        return gridSize
+    } else {
+        return gSize;
+    }
+}
+
 
 gridSizeBtn.addEventListener('click', () => {
-    let gridSize = Number(prompt('Input Size of grid(square):'));
+    gridSize = getGridSize('Input Size of grid(square):');
+    setupGrid(canvas, gridSize);
+})
+
+clear.addEventListener('click', () => {
     setupGrid(canvas, gridSize);
 })
