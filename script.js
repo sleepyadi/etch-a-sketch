@@ -90,7 +90,11 @@ function getGridSize(msg) {
     if (isNaN(gSize)) {
         return gridSize
     } else {
-        return gSize;
+        if (gSize > 100) {
+            return 100;
+        } else {
+            return gSize;
+        }
     }
 }
 
